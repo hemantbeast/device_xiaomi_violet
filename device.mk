@@ -356,6 +356,10 @@ PRODUCT_PACKAGES += \
     rcs_service_api \
     rcs_service_api.xml
 
+#Recorder
+PRODUCT_PACKAGES += \
+    Recorder
+
 # RenderScript HAL
 PRODUCT_PACKAGES += \
     android.hardware.renderscript@1.0-impl
@@ -417,10 +421,6 @@ PRODUCT_PACKAGES += \
 # USB
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
-
-# Wallpapers
-PRODUCT_PACKAGES += \
-    WallpapersBReel2018
 
 # Wifi
 PRODUCT_PACKAGES += \
