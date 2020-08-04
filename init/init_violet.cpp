@@ -30,6 +30,7 @@
 #include <stdlib.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
+#include <sys/sysinfo.h>
 
 #include <android-base/properties.h>
 #include "property_service.h"
@@ -55,9 +56,35 @@ void property_override_dual(char const system_prop[], char const vendor_prop[],
     property_override(vendor_prop, value);
 }
 
+void init_dalvik_vm_properties()
+{
+    struct sysinfo sys;
+
+    sysinfo(&sys);
+    if (sys.totalram > 4096ull * 1024 * 1024) {
+        // 6GB RAM
+        property_set("dalvik.vm.heapstartsize", "16m");
+        property_set("dalvik.vm.heapgrowthlimit", "256m");
+        property_set("dalvik.vm.heapsize", "512m");
+        property_set("dalvik.vm.heaptargetutilization", "0.5");
+        property_set("dalvik.vm.heapminfree", "8m");
+        property_set("dalvik.vm.heapmaxfree", "32m");
+    }
+    else {
+        // 4GB RAM
+        property_set("dalvik.vm.heapstartsize", "8m");
+        property_set("dalvik.vm.heapgrowthlimit", "192m");
+        property_set("dalvik.vm.heapsize", "512m");
+        property_set("dalvik.vm.heaptargetutilization", "0.6");
+        property_set("dalvik.vm.heapminfree", "8m");
+        property_set("dalvik.vm.heapmaxfree", "16m");
+    }
+}
+
 void vendor_load_properties()
 {
     // fingerprint
     property_override("ro.build.description", "violet-user 9 PKQ1.181203.001 V10.3.9.0.PFHINXM release-keys");
     property_override_dual("ro.build.fingerprint", "ro.vendor.build.fingerprint", "google/coral/coral:10/QQ3A.200605.001/6392402:user/release-keys");
+    init_dalvik_vm_properties();
 }
