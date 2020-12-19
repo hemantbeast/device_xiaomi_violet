@@ -25,17 +25,17 @@ INITIAL_COPYRIGHT_YEAR=2020
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "${MY_DIR}" ]]; then MY_DIR="${PWD}"; fi
 
-WAVE_ROOT="${MY_DIR}/../../.."
+ANDROID_ROOT="${MY_DIR}/../../.."
 
-HELPER="${WAVE_ROOT}/vendor/wave/build/tools/extract_utils.sh"
+HELPER="${ANDROID_ROOT}/tools/extract-utils/extract_utils.sh"
 if [ ! -f "${HELPER}" ]; then
     echo "Unable to find helper script at ${HELPER}"
     exit 1
 fi
 source "${HELPER}"
 
-# Initialize the helper for common
-setup_vendor "${DEVICE}" "${VENDOR}" "${WAVE_ROOT}" false
+# Initialize the helper
+setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}" false
 
 # Copyright headers and guards
 write_headers "${DEVICE}"
