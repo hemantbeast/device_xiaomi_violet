@@ -672,16 +672,12 @@ vendor/lib64/libperfioctl.so|7bf289a68671f675ded7fb62e561e59832983138
 vendor/lib64/libqti-perfd-client.so|d6502c16ab4dd7642641b6a8cbb061847ff5cb2d
 vendor/lib64/libqti-perfd.so|cdd82b3c3a6f305946d8feb35a413f08b00c714f
 vendor/lib64/libqti-util.so|834cc98315887e57a5f229f9ee1a0d20d0d8f4c3
-vendor/lib64/vendor.qti.hardware.perf@2.0.so|60a1362c97f5f1fa54de8f7e59ab004c5b525f97
-vendor/lib64/vendor.qti.hardware.perf@2.1.so|af1764ad3d191dfe92348183b1be431d86b10e4e
-vendor/lib64/vendor.qti.hardware.perf@2.2.so|52c4c0cf35d3fa9e509e26252a6dc196c1e89282
 vendor/lib/libperfconfig.so|bbecdc5b9f72f5aac80caed31079336cc41e6234
 vendor/lib/libperfgluelayer.so|c902ef08624b1ad7f272be1120b9f022753a59f2
 vendor/lib/libperfioctl.so|42789bf7d53750d33f501a130e47e596332744fc
 vendor/lib/libqti-perfd-client.so|1b0c70391d684ad95c79bc24ecb5ac8096d39019
 vendor/lib/libqti-perfd.so|538752c01eb8450f28915ff38a6c0b36ff06f814
 vendor/lib/libqti-util.so|0fc209bb65b08ea39177fa9dd61db9a9bfe6c754
-vendor/lib/vendor.qti.hardware.perf@2.2.so|e5997926aa323141885e330a564e816a7d66ef17
 
 # Peripheral Manager - from mojito-user 11 RKQ1.201022.002 V12.0.2.0.RKGEUXM release-keys
 vendor/bin/pm-proxy|dcf3efd75e22ef3c1585aa8baced3e1e5101328c
