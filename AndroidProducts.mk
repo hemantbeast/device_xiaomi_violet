@@ -6,9 +6,9 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/dot_violet.mk
+    $(LOCAL_DIR)/aicp_violet.mk
 
 COMMON_LUNCH_CHOICES := \
-    dot_violet-userdebug \
-    dot_violet-user \
-    dot_violet-eng
+    aicp_violet-userdebug \
+    aicp_violet-user \
+    aicp_violet-eng
