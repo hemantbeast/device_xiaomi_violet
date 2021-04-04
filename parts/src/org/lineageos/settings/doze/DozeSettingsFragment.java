@@ -27,6 +27,14 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.UserHandle;
+import android.provider.Settings;
+import androidx.preference.ListPreference;
+import androidx.preference.SwitchPreference;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.Preference.OnPreferenceChangeListener;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -34,21 +42,22 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
-import androidx.preference.Preference;
-import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceFragment;
-import androidx.preference.SwitchPreference;
+
+import net.margaritov.preference.colorpicker.ColorPickerPreference;
 
 import org.lineageos.settings.R;
 
 public class DozeSettingsFragment extends PreferenceFragment implements OnPreferenceChangeListener,
         CompoundButton.OnCheckedChangeListener {
 
+    private static final String PULSE_AMBIENT_LIGHT_COLOR_MODE = "pulse_ambient_light_color_mode";
+    private static final String PULSE_AMBIENT_LIGHT_COLOR = "pulse_ambient_light_color";
+
     private TextView mTextView;
     private View mSwitchBar;
 
-    private SwitchPreference mAlwaysOnDisplayPreference;
+    private ColorPickerPreference mEdgeLightColorPref;
+    private ListPreference mEdgeLightColorModePref;
 
     private SwitchPreference mPickUpPreference;
     private SwitchPreference mHandwavePreference;
@@ -70,11 +79,6 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
 
         boolean dozeEnabled = DozeUtils.isDozeEnabled(getActivity());
 
-        mAlwaysOnDisplayPreference = (SwitchPreference) findPreference(DozeUtils.ALWAYS_ON_DISPLAY);
-        mAlwaysOnDisplayPreference.setEnabled(dozeEnabled);
-        mAlwaysOnDisplayPreference.setChecked(DozeUtils.isAlwaysOnEnabled(getActivity()));
-        mAlwaysOnDisplayPreference.setOnPreferenceChangeListener(this);
-
         PreferenceCategory pickupSensorCategory = (PreferenceCategory) getPreferenceScreen().
                 findPreference(DozeUtils.CATEG_PICKUP_SENSOR);
         PreferenceCategory proximitySensorCategory = (PreferenceCategory) getPreferenceScreen().
@@ -92,17 +96,17 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
         mPocketPreference.setEnabled(dozeEnabled);
         mPocketPreference.setOnPreferenceChangeListener(this);
 
+        mEdgeLightColorModePref = (ListPreference) findPreference(PULSE_AMBIENT_LIGHT_COLOR_MODE);
+        mEdgeLightColorModePref.setOnPreferenceChangeListener(this);
+        mEdgeLightColorPref = (ColorPickerPreference) findPreference(PULSE_AMBIENT_LIGHT_COLOR);
+        mEdgeLightColorPref.setOnPreferenceChangeListener(this);
+        int edgeLightColorMode = Settings.System.getIntForUser(getActivity().getContentResolver(),
+                Settings.System.PULSE_AMBIENT_LIGHT_COLOR_MODE, 1, UserHandle.USER_CURRENT);
+        updateColorPrefs(edgeLightColorMode);
+
         // Hide proximity sensor related features if the device doesn't support them
         if (!DozeUtils.getProxCheckBeforePulse(getActivity())) {
             getPreferenceScreen().removePreference(proximitySensorCategory);
-        }
-
-        // Hide AOD if not supported and set all its dependents otherwise
-        if (!DozeUtils.alwaysOnDisplayAvailable(getActivity())) {
-            getPreferenceScreen().removePreference(mAlwaysOnDisplayPreference);
-        } else {
-            pickupSensorCategory.setDependency(DozeUtils.ALWAYS_ON_DISPLAY);
-            proximitySensorCategory.setDependency(DozeUtils.ALWAYS_ON_DISPLAY);
         }
     }
 
@@ -138,12 +142,13 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        if (DozeUtils.ALWAYS_ON_DISPLAY.equals(preference.getKey())) {
-            DozeUtils.enableAlwaysOn(getActivity(), (Boolean) newValue);
+        if (mEdgeLightColorModePref.equals(preference)) {
+            int edgeLightColorMode = Integer.valueOf((String) newValue);
+            updateColorPrefs(edgeLightColorMode);
+            return true;
         }
 
         mHandler.post(() -> DozeUtils.checkDozeService(getActivity()));
-
         return true;
     }
 
@@ -154,12 +159,6 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
 
         mTextView.setText(getString(isChecked ? R.string.switch_bar_on : R.string.switch_bar_off));
         mSwitchBar.setActivated(isChecked);
-
-        if (!isChecked) {
-            DozeUtils.enableAlwaysOn(getActivity(), false);
-            mAlwaysOnDisplayPreference.setChecked(false);
-        }
-        mAlwaysOnDisplayPreference.setEnabled(isChecked);
 
         mPickUpPreference.setEnabled(isChecked);
         mHandwavePreference.setEnabled(isChecked);
@@ -173,6 +172,10 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
             return true;
         }
         return false;
+    }
+
+    private void updateColorPrefs(int mode) {
+        mEdgeLightColorPref.setEnabled(mode == 2);
     }
 
     private static class HelpDialogFragment extends DialogFragment {
