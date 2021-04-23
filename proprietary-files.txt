@@ -1,15 +1,15 @@
 # All unpinned blobs are pulled from Xiaomi/violet/violet:10/QKQ1.190915.002/V12.0.5.0.QFHINXM:user/release-keys
 
-# ACDB - from mojito-user 11 RKQ1.201022.002 V12.0.2.0.RKGEUXM release-keys
-vendor/etc/acdbdata/IDP/IDP_Bluetooth_cal.acdb|2778d2e084eba604c810268cf5e8c08e906f3d0c
-vendor/etc/acdbdata/IDP/IDP_Codec_cal.acdb|41fa82da4f4fe065534760ea8f3ef32c0c8cf0e5
-vendor/etc/acdbdata/IDP/IDP_General_cal.acdb|4ae99895edfb9dda31aa90f241fa7e547a7e1c90
-vendor/etc/acdbdata/IDP/IDP_Global_cal.acdb|ca9974adedaf0f88fc213d3651923ba2c41b13b4
-vendor/etc/acdbdata/IDP/IDP_Handset_cal.acdb|90fcceb20962b6139ec51efc1f6704cd90181eac
-vendor/etc/acdbdata/IDP/IDP_Hdmi_cal.acdb|2cbfcd2de5774d25291fd937da813778f6103fa4
-vendor/etc/acdbdata/IDP/IDP_Headset_cal.acdb|b8b3d092d9e3a280b09acb5723333df8b68013b6
-vendor/etc/acdbdata/IDP/IDP_Speaker_cal.acdb|487e8f072e69484169b73877ae2e1df83efe608b
-vendor/etc/acdbdata/IDP/IDP_workspaceFile.qwsp|590707663e335789d9fb86dc9581ea06233c5f9e
+# ACDB
+vendor/etc/acdbdata/IDP/IDP_Bluetooth_cal.acdb
+vendor/etc/acdbdata/IDP/IDP_Codec_cal.acdb
+vendor/etc/acdbdata/IDP/IDP_General_cal.acdb
+vendor/etc/acdbdata/IDP/IDP_Global_cal.acdb
+vendor/etc/acdbdata/IDP/IDP_Handset_cal.acdb
+vendor/etc/acdbdata/IDP/IDP_Hdmi_cal.acdb
+vendor/etc/acdbdata/IDP/IDP_Headset_cal.acdb
+vendor/etc/acdbdata/IDP/IDP_Speaker_cal.acdb
+vendor/etc/acdbdata/IDP/IDP_workspaceFile.qwsp
 
 # ADSP - from LA.UM.9.1.r1-08300-SMxxx0.0
 vendor/bin/adsprpcd|c8a45eb83a6d70dcbcc1b8ec574391b49e8ca8b9
