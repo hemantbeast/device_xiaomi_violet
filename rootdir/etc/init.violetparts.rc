@@ -33,3 +33,9 @@ on boot
 # Vibration
   chown system system /sys/class/leds/vibrator/vtg_level
   chmod 0660 /sys/class/leds/vibrator/vtg_level
+
+# SystemUI Info
+  chown system system /sys/class/thermal/thermal_zone0/temp
+  chown system system /sys/class/power_supply/battery/temp
+  chmod 0664 /sys/class/thermal/thermal_zone0/temp
+  chmod 0664 /sys/class/power_supply/battery/temp

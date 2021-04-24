@@ -14,3 +14,6 @@ type sysfs_fastcharge, sysfs_type, fs_type;
 type kcal_dev, sysfs_type, fs_type;
 type vibrator_dev, sysfs_type, fs_type;
 type sysfs_tbrightness, sysfs_type, fs_type;
+
+# SystemUI
+type sysfs_device_info, fs_type, sysfs_type;
