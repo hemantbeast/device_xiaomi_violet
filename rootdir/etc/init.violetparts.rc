@@ -41,3 +41,9 @@ on boot
   chmod 0644 /sys/class/power_supply/bms/battery_health
   chown system system /sys/class/power_supply/bms/battery_type
   chmod 0644 /sys/class/power_supply/bms/battery_type
+
+# SystemUI Info
+  chmod 0664 /sys/class/thermal/thermal_zone0/temp
+  chown system system /sys/class/thermal/thermal_zone0/temp
+  chmod 0664 /sys/class/power_supply/battery/temp
+  chown system system /sys/class/power_supply/battery/temp
