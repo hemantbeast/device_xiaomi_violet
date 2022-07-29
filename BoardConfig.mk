@@ -20,7 +20,7 @@ BUILD_BROKEN_ENFORCE_SYSPROP_OWNER := true
 
 # Architecture
 TARGET_ARCH := arm64
-TARGET_ARCH_VARIANT := armv8-2a-dotprod
+TARGET_ARCH_VARIANT := armv8-2a
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_VARIANT := cortex-a55
 
@@ -62,9 +62,6 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 KERNEL_LD := LD=ld.lld
 TARGET_KERNEL_SOURCE := kernel/xiaomi/violet
 TARGET_KERNEL_CONFIG := vendor/violet-perf_defconfig
-TARGET_KERNEL_CLANG_COMPILE := true
-TARGET_KERNEL_CLANG_VERSION := proton
-TARGET_KERNEL_CLANG_PATH := $(shell pwd)/prebuilts/clang/host/linux-x86/clang-$(TARGET_KERNEL_CLANG_VERSION)
 BOARD_RAMDISK_OFFSET := 0x01000000
 
 # Platform

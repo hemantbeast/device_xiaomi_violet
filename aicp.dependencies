@@ -1,0 +1,12 @@
+[
+  {
+    "repository": "hemantbeast/vendor_xiaomi_violet",
+    "target_path": "vendor/xiaomi/violet",
+    "branch": "s12.1"
+  },
+  {
+    "repository": "hemantbeast/kernel_xiaomi_violet",
+    "target_path": "kernel/xiaomi/violet",
+    "branch": "s12.1"
+  }
+]
