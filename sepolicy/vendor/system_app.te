@@ -1,2 +1,6 @@
 # Fps Info
 allow system_app vendor_sysfs_graphics:file { getattr open read };
+
+# Access rules for reading battery health
+allow system_app sysfs_battery_supply:dir { search };
+allow system_app sysfs_battery_supply:file { r_file_perms };
