@@ -36,3 +36,18 @@ on boot
     chown system system /sys/class/power_supply/battery/temp
     chmod 0664 /sys/class/thermal/thermal_zone0/temp
     chmod 0664 /sys/class/power_supply/battery/temp
+
+# Battery Health
+    chown system system /sys/class/power_supply/battery/charge_full
+    chmod 0644 /sys/class/power_supply/battery/charge_full
+    chown system system /sys/class/power_supply/battery/charge_full_design
+    chmod 0644 /sys/class/power_supply/battery/charge_full_design
+    chown system system /sys/class/power_supply/battery/cycle_count
+    chmod 0644 /sys/class/power_supply/battery/cycle_count
+    chown system system /sys/class/power_supply/battery/charge_counter
+    chmod 0644 /sys/class/power_supply/battery/charge_counter
+    chown system system /sys/class/power_supply/battery/health
+    chmod 0644 /sys/class/power_supply/battery/health
+    chown system system /sys/class/power_supply/battery/technology
+    chmod 0644 /sys/class/power_supply/battery/technology
+
