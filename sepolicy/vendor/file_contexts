@@ -43,6 +43,10 @@
 # Mac
 /vendor/bin/nv_mac       u:object_r:vendor_wcnss_service_exec:s0
 
+# QuickSettings SystemInfo
+/sys/class/thermal/thermal_zone0/temp                           u:object_r:sysfs_device_info:s0
+/sys/class/power_supply/battery/temp                            u:object_r:sysfs_device_info:s0
+
 # Sockets
 /dev/socket/audio_hw_socket                   u:object_r:audio_socket:s0
 

@@ -29,3 +29,10 @@
 
 on charger
     start thermal-engine
+
+on boot
+    # SystemUI Info
+    chown system system /sys/class/thermal/thermal_zone0/temp
+    chown system system /sys/class/power_supply/battery/temp
+    chmod 0664 /sys/class/thermal/thermal_zone0/temp
+    chmod 0664 /sys/class/power_supply/battery/temp
