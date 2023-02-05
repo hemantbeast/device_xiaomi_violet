@@ -1,15 +1,13 @@
 [
   {
-    "repository" : "vendor_xiaomi_violet",
+    "repository": "hemantbeast/proprietary_vendor_violet",
     "target_path": "vendor/xiaomi/violet",
-    "branch": "thirteen",
-    "remote": "pixel-devices-blobs"
+    "branch": "t13.0"
   },
   {
-    "repository": "kernel_xiaomi_violet",
+    "repository": "hemantbeast/kernel_xiaomi_violet",
     "target_path": "kernel/xiaomi/violet",
-    "branch":"thirteen",
-    "remote":"pixel-devices"
+    "branch": "t13.0"
   },
   {
     "repository": "vendor_xiaomi-firmware",

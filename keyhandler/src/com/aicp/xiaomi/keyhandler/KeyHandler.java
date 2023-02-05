@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-package me.superioros.keyhandler;
+package com.aicp.xiaomi.keyhandler;
 
 import android.app.ActivityManager;
 import android.content.Context;

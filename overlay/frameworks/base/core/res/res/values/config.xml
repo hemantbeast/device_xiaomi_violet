@@ -531,6 +531,6 @@
 
     <!-- Names of the key handler classes -->
     <string-array name="config_deviceKeyHandlerClasses" translatable="false">
-        <item>me.superioros.keyhandler.KeyHandler</item>
+        <item>com.aicp.xiaomi.keyhandler.KeyHandler</item>
     </string-array>
 </resources>
